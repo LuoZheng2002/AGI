@@ -1,0 +1,18 @@
+When there is more than one convention that satisfy a condition,
+several solutions are generated.
+When a solution behaves differently from what we expect, such solution is eliminated.
+In this way, there will be only one left when the solutions are filtered long enough.
+
+However, a complicated method may contain a lot of places
+where more than one convention can explain the logic,
+so the solution count will grow exponentially if we keep them all
+
+use the first explanation to generate solution (with multiple predictions)
+use other explanations to eliminate some predictions
+if there's still more than one prediction, ask questions to the developer
+the best way is to generate a problem that can make a difference between predictions
+another way is to ask about the problem logically but need to translate the question
+into human readable language
+
+or if the developer refuses to answer, keep the confusion until one day it can be solved
+when calling a method with confusion, a warning should be raised.

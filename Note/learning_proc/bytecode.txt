@@ -1,0 +1,20 @@
+reg[0] = 'number'(default)
+for i in range(max(input[0].size, input[1].size)):
+    if i < input[0].size and i < input[1].size:
+        reg[1] = call('find the sum of two single digit numbers', call('digit to number', input[0][!i]), call('digit to number', input[1][!i])
+    else_if i < input[0].size and i >= input[1].size:
+        reg[1] = call('digit_to_number', input[0][!i])
+    else_if i >= input[0].size and i < input[1].size:
+        reg[1] = call('digit_to_number', input[1][!i])
+    if i == 0:
+        reg[2] = reg[1]
+    if i >= 1 and reg[2]<i-1>.size >= 2:
+        reg[2] = call('find the sum of two single digit numbers', reg[1], call('digit to number', reg[2]<i-1>[!1]))
+    else
+        reg[2] = reg[1]
+    delete reg[1]<i>
+    reg[0][!i] = reg[2]<i>[!0]
+if reg[2]<max(input[0].size, input[1].size)-1>.size>=2:
+    reg[0][!max(input[0].size, input[1].size)] = reg[2]<max(input[0].size, input[1].size)-1>[!1]
+delete reg[2]
+return reg[0]

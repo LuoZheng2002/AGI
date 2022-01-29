@@ -1,0 +1,6 @@
+A G I C  version
+belongs to which type # e.g. '1' belongs to 'digit'
+has what instance (pointer)# e.g. 'digit' has an instance object '1'
+attributes (pointer)
+[attributes name, attributes type(AGIObject/AGIList)]
+

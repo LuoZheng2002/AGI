@@ -1,0 +1,27 @@
+r = {
+    'input': 1,
+    'return': 2,
+    'reg': 3,
+    'iterator': 4,
+    'assign': 5,
+    'system_call': 6,
+    'call': 7,
+    'system_type': 8,
+    'concept_type': 9,
+    'concept_instance': 10,
+    'expr': 11,
+    'constexpr': 12,
+    'all': 13,
+    'for': 14,
+    'while': 15,
+    'break': 16,
+    'if': 17,
+    'else_if': 18,
+    'else': 19,
+    'size': 20,
+    'get_member': 21,
+    'at': 22,
+    'at_reverse': 23,
+    'delete': 24
+}
+rr = {v: k for k, v in r.items()}

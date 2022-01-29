@@ -1,0 +1,39 @@
+
+method_usage: find 'sum' of ['number', 'number']
+
+instance: find 'sum' of ['138', '69']
+layout:
+'''
+    138
+     69
+'''
+find 'sum' of ['8', '9'] as reg0 # (try finding method in memory first, then...)
+suppose reg0 == '17'
+layout:
+'''
+    138
+     69
+     1
+      7
+'''
+find 'sum' of ['3', '6'] as reg1
+suppose reg1 == '9'
+find 'sum' of ['1', '9'] as reg2
+suppose reg2 == '10'
+layout:
+'''
+    138
+     69
+    11
+     07
+'''
+find 'sum' of ['1', '1'] as reg3
+suppose reg3 == '2'
+layout:
+'''
+    138
+     69
+    11
+    207
+'''
+return '207'

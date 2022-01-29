@@ -1,0 +1,13 @@
+A G I E + 4 bytes version info
+line_count (4bytes)
+line_pointers
+
+each line:
+line_length
+head (assign, if, for, ...)
+expr_pointers
+
+expr:
+expr_size
+head
+expr_pointers

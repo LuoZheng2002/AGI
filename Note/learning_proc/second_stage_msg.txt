@@ -1,0 +1,137 @@
+# AGILang learn_method_create
+
+operation=method
+sub_operation=create
+(the following are unique to method_create)
+description=find('sum')('number', 'number')
+input_types='number', 'number'
+input_roles='addend', 'addend'
+input_attributes=None, None
+output_types='number'
+output_roles='sum'
+output_attributes=None
+context_restrictions=None
+attributes:
+    'English description' = 'find the sum of two numbers'
+explanation_type=instance
+explanation1:
+    attributes:
+        instance_input = '138', '69'
+        instance_output = unknown
+    process:
+    var[0] = 2dmap(default)
+    do
+    {
+        var[0].element[0] = '1'
+        var[0].element[1] = '3'
+        var[0].element[1].add_pos(0, right)
+        var[0].element[2] = '8'
+        var[0].element[2].add_pos(1, right)
+        var[0].element[3] = '6'
+        var[0].element[3].add_pos(1, down)
+        var[0].element[4] = '9'
+        var[0].element[4].add_pos(3, right)
+        var[0].element[4].add_pos(2, down)
+    }
+    because
+    {
+        var[0].element[0] == input[0].'value'[0]
+        var[0].element[1] == input[0].'value'[1]
+        var[0].element[2] == input[0].'value'[2]
+        var[0].element[3] == input[1].'value'[0]
+        var[0].element[4] == input[1].'value'[1]
+    }
+    do
+    {
+        constexpr var[1] = '8'
+        constexpr var[2] = '9'
+        call('find the sum of two single digit numbers', var[1], var[2]) as var[3]
+        suppose var[3] == '17'
+    }
+    because
+    {
+        var[1] == var[0].element[2]
+        var[2] == var[0].element[4]
+    }
+    do
+    {
+        constexpr var[4] = '1'
+        constexpr var[5] = '7'
+        var[0].element[5] = (var[4], 3, down)
+        var[0].element[6] = (var[5], 4, down)
+    }
+    because
+    {
+        var[4] == var[3].'value'[0]
+        var[5] == var[3].'value'[1]
+    }
+    do
+    {
+        constexpr var[6] = '3'
+        constexpr var[7] = '6'
+        call('find the sum of two single digit numbers', var[6], var[7]) as var[8]
+        suppose var[8] == '9'
+    }
+    because
+    {
+        var[6] == var[0].element[1]
+        var[7] == var[0].element[3]
+    }
+    do
+    {
+        call('find the sum of two single digit numbers', var[8], var[0].element[5]) as var[9]
+        suppose var[9] == '10'
+    }
+    because
+    {
+        var[0].pos_relationship(5, 1) == down and var[0].pos_relationship(5, 3) == down
+    }
+    do
+    {
+        constexpr var[10] = '1'
+        constexpr var[11] = '0'
+        var[0].element[7] = (var[10], 0, down, 5, left)
+        var[0].element[8] = (var[11], 3, down, 6, left)
+    }
+    because
+    {
+        var[10] == var[9].'value'[0]
+        var[11] == var[9].'value'[1]
+    }
+    do
+    {
+        var[12] = var[0].element[0]
+    }
+    because
+    {
+        var[0].find(0, down, 3, left) == None
+    }
+    do
+    {
+        call('find the sum of two single digit numbers', var[12], var[0].element[7]) as var[13]
+        suppose var[13] == '2'
+    }
+    because
+    {
+        var[0].pos_relationship(7, 0) == down
+    }
+    do
+    {
+        constexpr var[14] = '2'
+        var[0].element[9] = (var[14], 0, down, 8, left)
+    }
+    because
+    {
+        var[14] == var[13].'value'[0]
+    }
+    do
+    {
+        var[15] = '207'
+    }
+    because
+    {
+        var[15].'value'[0] == var[0].element[9]
+        var[15].'value'[1] == var[0].element[8]
+        var[15].'value'[2] == var[0].element[6]
+    }
+    return var[15]

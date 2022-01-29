@@ -1,0 +1,9 @@
+2dmap:
+add_pos(element_index, up/down/left/right)
+add_horizontal(array) -> next_element_index
+add_vertical(array) -> next_element_index
+add_horizontal_reverse -> next_element_index
+add_vertical_reverse -> next_element_index
+align(one_element_in_selected_line, another_element_in_selected_line,
+    line_direction, align_direction)
+

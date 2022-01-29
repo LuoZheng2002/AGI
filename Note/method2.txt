@@ -1,0 +1,7 @@
+reg[0] = concept_instance 1
+if input[0] == concept_instance 100 and input[1] == concept_instance 100:
+    reg[0][0] = concept_instance 100
+elif ...
+else
+
+return reg[0]

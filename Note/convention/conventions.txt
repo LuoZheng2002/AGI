@@ -1,0 +1,87 @@
+common conventions:
+1. difference between indices
+a[1]->b[3]
+a[2]->b[4]   ->   a[i]->b[i+2] for any i
+a[3]->b[5]
+note: the range of i is commonly subject to the length of arrays,
+      however, sometimes when the range of i appears to be smaller than
+      the length of arrays, the factor of the range should be reconsidered
+note: the value of difference may be related to variables and may not be constant
+note: no matter what the difference is (including 0),
+      convention No.3 must be also checked
+note: indices of system relative-pos containers like 2dmap can't be used here
+
+2. sum of indices is constant
+a[4]->b[1]
+a[3]->b[2]   ->   a[i]->b[5-i] for any i
+a[2]->b[3]
+note: the range of i is commonly subject to the length of arrays,
+      however, sometimes when the range of i appears to be smaller than
+      the length of arrays, the factor of the range should be reconsidered
+note: the value of sum may be related to variables and may not be constant
+note: when sum of indices is constant, it's better to check if the index of an array
+      matches the reverse index of another, which is a better method of generalization
+
+3. the difference between reverse indices is constant
+a[!1]->b[!2]
+a[!2]->b[!3]   ->   a[!i]->b[!i+1] for any i
+a[!3]->b[!4]
+note: this convention is only effective when the difference is 0 or is constant
+      no matter what the inputs are
+
+4. identical operations with linear-ascending indices:
+f(a[0], b[1], c[2])
+f(a[1], b[2], c[3])   ->   for i in range(3):
+f(a[2], b[3], c[4])            f(a[i], b[i+1], c[i+2])
+note: the range is commonly determined by variables
+
+5. similar operations whose reasons for difference can be deduced:
+suppose a = [1, None, 2, 3, None]
+f(a[0], b[1], c[2])        for i in range(5):
+g(b[2], c[3])                  if a[i] != None:
+f(a[2], b[3], c[4])   ->           f(a[i], b[i+1], c[i+2])
+f(a[3], b[4], c[5])            else:
+g(b[5], c[6])                      g(b[i+1], c[i+2])
+
+6. iterate through the array:
+suppose a.size = 3
+b[3] = a[0]
+b[4] = a[1]   ->   for i in range(a.size):
+b[5] = a[2]            b[i+3] = a[i]
+
+7. relative position in containers like 2dmap:
+suppose a.size = 4
+2dmap.element[0] = a[0]
+2dmap.element[1] = a[1]
+2dmap.element[2] = a[2]
+2dmap.element[3] = a[3]              ->   2dmap.add_horizontal(a)
+2dmap.element[1].add_pos(0, right)
+2dmap.element[2].add_pos(1, right)
+2dmap.element[3].add_pos(2, right)
+
+8. alignment in 2dmap:
+suppose 2dmap.element[0-3] is in a horizontal line
+suppose 2dmap.element[4-6] is in a horizontal line
+2dmap.element[4].add_pos(1, down)
+2dmap.element[5].add_pos(2, down)   ->   2dmap.align(0, 4, horizontal, right)
+2dmap.element[6].add_pos(3, down)
+
+9. when a non-zero number pops out the first time, check if it's an array's size - 1:
+suppose a.size == 4
+c[0] = a[3] - b[3]   -> c[0] = a[a.size-1] - b[a.size-1]
+note: when a[3] appears, check the size of 'a' first
+
+10. when a non-zero number pops out in a relative-pos container like 2dmap,
+    check if there's some variables related to the reference:
+suppose 2dmap.element[0-3] == a[0-3]
+suppose a.size == 4
+2dmap.element[3] -> a[a.size-1]
+
+11. when a step concerns index 0 or an array's size - 1, then it's likely that
+    there will be similar steps with ascending or descending indices,
+    so we can make a for loop.
+
+12. a[0] might be, say, a[!1]. if a.size is often the same when a[0] appears,
+    consider the situation a[!x], where x is a relative constant
+
+13. check the

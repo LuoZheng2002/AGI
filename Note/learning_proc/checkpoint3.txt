@@ -1,0 +1,27 @@
+# in this section, for loops for logic blocks are established
+# if containers like 2dmap are concerned in a potential for loop,
+# chances are that the 2dmap can be eliminated
+
+instance_input = '138', '69'
+
+var[0] = 'number'(default)
+
+for i in range(max(input[0].'value'.size, input[1].'value'.size)):
+    if i <= input[0].'value'.size - 1 and i <= input[1].'value'.size - 1:
+        var[1] = call('find the sum of two single digit numbers',  # block type 1
+            input[0].'value'[!i], input[1].'value'[!i])
+    if i <= input[0].'value'.size - 1 and i > input[1].'value'.size - 1:
+        var[1] = input[0].'value'[!i]
+    if i > input[0].'value'.size - 1 and i <= input[1].'value'.size - 1:
+        var[1] = input[1].'value'[!i]
+
+    if i >= 1 and var[1]<i-1>.'value'.size >= 2:
+        var[2] = call('find the sum of two single digit numbers', var[1],  #block type 3
+            var[1]<i-1>.'value'[!1])
+
+    var[0].'value'[!i] = var[1].'value'[!0]
+
+if var[1]<max(input[0].'value'.size, input[1].'value'.size)-1>.'value'.size>=2:
+    var[0].'value'[!max(input[0].'value'.size, input[1].'value'.size)] =
+        var[1]<max(input[0].'value'.size, input[1].'value'.size)-1>.'value'[!1]
+return var[0]

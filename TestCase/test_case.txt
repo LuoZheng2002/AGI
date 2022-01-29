@@ -1,0 +1,26 @@
+The following is how to find the sum of two numbers.
+To find the sum of 138 and 69, you first write the two numbers like this:
+    138
+     69
+Then you find the sum of 8 and 9
+according to the method of finding the sum of two single digit numbers,
+and you get 17
+Then write it like this:
+    138
+     69
+     1
+      7
+Then you find the sum of 3 and 6 and you get 9
+You find the sum of 1 and 9 and you get 10
+Then write it like this:
+    138
+     69
+    11
+     07
+Then you find the sum of 1 and 1 and you get 2
+Then write it like this:
+    138
+     69
+    11
+    207
+207 is the final result.

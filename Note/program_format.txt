@@ -1,0 +1,21 @@
+[
+    [assign, [reg, 0, []], [concept_instance, 1]],
+    [for, 0, [0], [system_call, 'max', [[size, [input, 0]], [size, [input, 1]]]], (end_line)],
+    [if, [system_call, 'and', [[system_call, '<', [[iterator, 0], [size, [input, 0]]]], [system_call, '<', [[iterator,0], [size, [input, 1]]]]]], (end_line)],
+    [assign, [reg, 1, [[iterator, 0]]], [call, 'find...', [[call, 'digit...', [[at_reverse, [input, 0], [iterator, 0]]]]],[call, 'digit...', [[at_reverse, [input, 1], [iterator, 0]]]]]],
+    [else_if, [system_call, 'and', [[system_call, '<', [[iterator, 0], [size, [input, 0]]]],[system_call, '>=', [[iterator, 0], [size, [input, 1]]]]]], (end_line)],
+    [assign, [reg, 1, [[iterator, 0]]], [at_reverse, [input, 0], [iterator, 0]]],
+    [else_if, [system_call, 'and', [[system_call, '>=', [[iterator, 0], [size, [input, 0]]]],[system_call, '<', [[iterator, 0], [size, [input, 1]]]]]], (end_line)],
+    [assign, [reg, 1, [[iterator, 0]]], [at_reverse, [input, 1], [iterator, 0]]],
+    [if, [system_call, 'and', [[system_call, '>=', [[iterator, 0], 1]], [system_call, '>=', [[size, [reg, 1, [system_call, 'offset', [[iterator, 0], [-1]]]]], [2]]]]], (end_line)],
+    [assign, [reg, 2, [[iterator, 0]], [call, 'find...', [[reg, 1, [[iterator, 0]]],[call, 'digit...', [[at_reverse, [reg, 1, [system_call, 'offset', [[iterator, 0], [-1]]]], [1]]]]]],
+    [else, (end_line)],
+    [assign, [reg, 2, [[iterator, 0]]], [reg, 1, [[iterator, 0]]]],
+    [delete, 1, [[iterator, 0]]],
+    [assign, [at_reverse, [reg, 0, []], [iterator, 0]], [at_reverse, [reg, 2, [[iterator, 0]]], [0]]],
+    [if, [system_call, '>=', [[reg, 2, [[system_call, 'offset',[[system_call, 'max', [[size, [input, 0]],[size, [input, 1]]]], [-1]]]]], [2]]], (end_line)],
+    [assign, [at_reverse, [reg, 0, []], [system_call, 'max', [[size, [input, 0]],[size, [input, 1]]]]], [at_reverse, [reg, 2, [[system_call, 'max', [[size, [input, 0]],[size, [input, 1]]]]]], [1]]],
+    [delete, 2, []],
+    [return, [reg, 0, []]]
+]
+
